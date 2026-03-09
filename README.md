@@ -46,15 +46,15 @@ VID-AD_dataset/
 │           ├── Single-Aspect-A/
 │           ├── Single-Aspect-B/         # (varies by category)
 │           └── Dual-Aspects/
-├── {Category}_Blurry_CD/          # Blurry Camera Distortion
 ├── {Category}_Cable_BG/           # Cable Background
-├── {Category}_Low-light_CD/       # Low-light Camera Distortion
-└── {Category}_Mesh_BG/            # Mesh Background
+├── {Category}_Mesh_BG/            # Mesh Background
+├── {Category}_Blurry_CD/          # Blurry Condition
+└── {Category}_Low-light_CD/       # Low-light Condition
 ```
 
 **10 Scenarios:** Balls, Blocks, Cookies, Dishes, Fruits, Ropes, Stationery, Sticks, Tapes, Tools
 
-**Five Capture Conditions:** Original, Blurry_CD, Cable_BG, Low-light_CD, Mesh_BG
+**Five Capture Conditions:** Original, Cable_BG, Mesh_BG, Low-light_CD, Blurry_CD
 
 ### Dataset Statistics
 
