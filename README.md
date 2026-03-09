@@ -4,7 +4,7 @@
     <a href='https://arxiv.org/abs/xxxx.xxxxx'>
       <img src='https://img.shields.io/badge/Paper-arXiv-red?style=plastic&logo=arXiv&logoColor=red' alt='Paper arXiv'>
     </a>
-    <a href='https://example.com/vid-ad-dataset'>
+    <a href='https://drive.google.com/file/d/1_UaWAuylvaErnvOq0uxq4gIg_NeSUNdz/view?usp=sharing'>
       <img src='https://img.shields.io/badge/Data-Dataset-green?style=plastic&logo=Google%20Drive&logoColor=green' alt='Dataset'>
     </a>
 </p>
@@ -31,7 +31,7 @@ Extensive experiments demonstrate consistent improvements over baselines across 
 ### Download
 
 <!-- TODO: Replace with actual dataset URL -->
-The dataset can be downloaded from [here](https://example.com/vid-ad-dataset).
+The dataset can be downloaded from [here](https://drive.google.com/file/d/1_UaWAuylvaErnvOq0uxq4gIg_NeSUNdz/view?usp=sharing).
 
 ### Dataset Structure
 
