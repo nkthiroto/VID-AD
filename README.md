@@ -77,5 +77,4 @@ If you find this dataset useful, please cite our paper:
 
 ## License
 
-<!-- TODO: Add license information -->
-This dataset is released under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
+This dataset is released under the [MIT License](https://opensource.org/licenses/MIT).
