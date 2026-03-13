@@ -26,6 +26,14 @@ Extensive experiments demonstrate consistent improvements over baselines across 
   <img src="figures/Overview.png" width="100%">
 </p>
 
+## Method
+
+<p align="center">
+  <img src="figures/Method.png" width="100%">
+</p>
+
+Our language-based anomaly detection framework leverages Vision Language Models (VLMs) to generate textual descriptions of normal images. We employ contrastive learning with BERT, using positive sentences from normal images and contradiction-based negative sentences to learn embeddings that emphasize logical content over low-level appearance variations.
+
 ## Dataset
 
 ### Download
@@ -52,7 +60,7 @@ VID-AD_dataset/
 └── {Category}_Low-light_CD/       # Low-light Condition
 ```
 
-**10 Scenarios:** Balls, Blocks, Cookies, Dishes, Fruits, Ropes, Stationery, Sticks, Tapes, Tools
+**10 Scenarios:** *Balls*, *Blocks*, *Cookies*, *Dishes*, *Fruits*, *Ropes*, *Stationery*, *Sticks*, *Tapes*, *Tools*
 
 **Five Capture Conditions:** Original, Cable_BG, Mesh_BG, Low-light_CD, Blurry_CD
 
@@ -61,6 +69,110 @@ VID-AD_dataset/
 <p align="center">
   <img src="figures/Dataset_Statistics.png" width="100%">
 </p>
+
+## Results
+
+Our method demonstrates consistent improvements over existing baseline methods across all capture conditions and categories.
+
+### Overall Performance
+
+<p align="center">
+  <img src="figures/result_1.png" width="100%">
+</p>
+
+ROC-AUC scores across different capture conditions (White BG, Cable BG, Mesh BG, Low-light CD, Blurry CD) show that our approach maintains robustness against vision-induced distraction.
+
+### Per-Category Results
+
+<p align="center">
+  <img src="figures/result_2.png" width="100%">
+</p>
+
+Detailed per-category (Stick, Fruits, Tools, Cookies, Tapes, Stationery, Ropes, Blocks, Dishes, Balls) error rates validate the effectiveness across diverse manufacturing scenarios.
+
+### Ablation Study
+
+<p align="center">
+  <img src="figures/Ablation.png" width="100%">
+</p>
+
+Ablation studies demonstrate the importance of each component in our framework.
+
+## Requirements
+
+```bash
+conda env create -f environment.yml
+conda activate vid-ad_venv
+```
+
+### Model Weights
+
+The following pre-trained models are automatically downloaded from Hugging Face when first used.
+Access to some models may require accepting the license on the Hugging Face model page.
+
+| Model | Hugging Face ID | Note |
+|---|---|---|
+| **Qwen2-VL** (default) | [Qwen/Qwen2-VL-7B-Instruct](https://huggingface.co/Qwen/Qwen2-VL-7B-Instruct) | |
+| Llama 3.2 Vision | [meta-llama/Llama-3.2-11B-Vision-Instruct](https://huggingface.co/meta-llama/Llama-3.2-11B-Vision-Instruct) | Requires access approval |
+| LLaVA v1.5 | [llava-hf/llava-1.5-13b-hf](https://huggingface.co/llava-hf/llava-1.5-13b-hf) | |
+| BERT | [google-bert/bert-base-uncased](https://huggingface.co/google-bert/bert-base-uncased) | Used for contrastive learning |
+
+To download models in advance, you can use the Hugging Face CLI:
+
+```bash
+pip install huggingface_hub
+huggingface-cli login  # Required for gated models (e.g., Llama)
+huggingface-cli download Qwen/Qwen2-VL-7B-Instruct  # Default model
+```
+
+For other models:
+
+```bash
+huggingface-cli download meta-llama/Llama-3.2-11B-Vision-Instruct  # Requires login
+huggingface-cli download llava-hf/llava-1.5-13b-hf
+```
+
+## Usage
+
+### Basic Usage
+
+```bash
+python verification.py --model qwen
+```
+
+### Arguments
+
+| Argument | Description | Default |
+|---|---|---|
+| `--model` | VLM model to use (`qwen`, `llama`, or `llava`) | (required) |
+| `--datasets` | Dataset(s) to process | All datasets |
+| `--conditions` | Condition(s) to process (`Original`, `Cable_BG`, `Mesh_BG`, `Low-light_CD`, `Blurry_CD`) | All conditions |
+| `--base_dir` | Base directory for output (results and models) | `./output` |
+| `--dataset_dir` | Base directory of the VID-AD dataset | `./dataset/VID-AD_dataset` |
+| `--prompt_dir` | Directory containing prompt files | `./prompt` |
+
+### Examples
+
+Process specific datasets and conditions:
+
+```bash
+python verification.py --model llama --datasets Balls Sticks --conditions Original Cable_BG
+```
+
+Specify custom paths:
+
+```bash
+python verification.py --model qwen \
+    --base_dir /path/to/output \
+    --dataset_dir /path/to/VID-AD_dataset \
+    --prompt_dir /path/to/prompt
+```
+
+### Prompt Files
+
+The `--prompt_dir` directory should contain:
+- `{Category}_prompt.txt` — Image description prompt for each category (e.g., `Balls_prompt.txt`)
+- `negative_sentence_prompt.txt` — Prompt for generating negative (anomalous) sentences
 
 <!-- ## Citation
 
