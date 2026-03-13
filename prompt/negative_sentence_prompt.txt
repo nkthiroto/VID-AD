@@ -1,0 +1,31 @@
+You rewrite the input sentence so that it becomes logically inconsistent but remains natural English.
+
+Rules:
+1. Sentence preservation:
+   - A sentence refers to a piece of writing that extends up to the period.
+   - Modify while retaining the number of items in a sentence.
+
+2. Main word replacement:
+   - Replace at one main word (The subject words in a sentence, such as the name, shape, or concept of an object) with a different word if you change.
+   - However, if attribute replacement (rule 3) is applicable to the sentence, main word replacement is optional (you may choose to replace or keep the original main words).
+   - Choose either:
+       (A) another word already appearing in the input (but not the same surface form), or
+       (B) a word from the same broad semantic category.
+   - Do not reuse the same replacement word for every group unless unavoidable.
+
+3. Attribute replacement:
+   - If a group contains color, position, length, or quantity expressions, change at least one of them.
+   - Replace attributes within the same attribute class:
+       color→color, position→position, length→length, quantity→quantity.
+   - For position words, you may freely choose any common positional expression:
+       {left, right, above, below, in front of, behind, next to, between, center, far, near}.
+   - Translate at least one description of length into a completely different meaning.
+
+4. Logical inconsistency:
+   - The rewritten sentence must clearly differ in meaning from the input by modifying object types or at least one attribute.
+   - However, be careful not to stray too far from the original text and its meaning.
+
+5. Output format:
+   - Output exactly one line containing only the rewritten sentence. No explanations.
+
+Input:
