@@ -1,7 +1,7 @@
 # VID-AD: A Dataset for Image-Level Logical Anomaly Detection under Vision-Induced Distraction
 
 <p align="left">
-    <a href='https://arxiv.org/abs/xxxx.xxxxx'>
+    <a href='https://arxiv.org/abs/2603.13964'>
       <img src='https://img.shields.io/badge/Paper-arXiv-red?style=plastic&logo=arXiv&logoColor=red' alt='Paper arXiv'>
     </a>
     <a href='https://drive.google.com/file/d/1_UaWAuylvaErnvOq0uxq4gIg_NeSUNdz/view?usp=sharing'>
